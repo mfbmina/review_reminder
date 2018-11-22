@@ -38,15 +38,18 @@ function handleUserLogout() {
 export function fetchUser() {
   return (dispatch) => {
     dispatch(requestUser());
-    return axios.get('/api/user')
+    return axios.get('/api/user', {
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    })
       .then(res => dispatch(receiveUser(res)))
       .catch(err => dispatch(handleUserError(err)));
   };
 }
 
 export function handleLogout() {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     return axios.delete('/api/signout')
-      .then(() => dispatch(handleUserLogout()));
+      .then(() => dispatch(handleUserLogout()))
+      .then(() => dispatch(getState.history.push('/')));
   };
 }
