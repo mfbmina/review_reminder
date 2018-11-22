@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resource :user, only: :show
+    resource :user, only: :show do
+      delete :sign_out
+    end
+
     resources :repositories, only: :index do
       get :sync, on: :collection
     end
@@ -17,7 +20,6 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
-  delete "/sign_out" => "sessions#destroy", as: :sign_out
 
   get '*path', to: "home#index"
 
