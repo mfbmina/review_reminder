@@ -17,7 +17,7 @@ class CreateGithubWebhook
   private
 
   def url_params
-    { url: "http://f76dcc68.ngrok.io/webhooks/github", content_type: 'json' }
+    { url: "http://a0e6ee4a.ngrok.io/webhooks/github", content_type: 'json' }
   end
 
   def required_hooks

@@ -63,7 +63,7 @@ export default class DashboardComponent extends Component {
         </p>
 
         <a
-          href={`https://slack.com/oauth/authorize?client_id=487296529927.485508548240&scope=chat:write:bot,incoming-webhook,bot&redirect_uri=http://localhost:3000/repositories/${repositoryId}/slack`}
+          href={`https://slack.com/oauth/authorize?client_id=487296529927.485508548240&scope=chat:write:bot,incoming-webhook,bot&redirect_uri=http://a0e6ee4a.ngrok.io/repositories/${repositoryId}/slack`}
         >
           <img
             alt="Add to Slack"
