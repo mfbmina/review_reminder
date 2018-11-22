@@ -1,1 +1,1 @@
-json.extract! @current_user
+json.extract! @user
