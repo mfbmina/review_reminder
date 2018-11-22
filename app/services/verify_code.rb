@@ -4,7 +4,7 @@ class VerifyCode
   def initialize(code, repository_id)
     @client = Slack::Web::Client.new
     @code = code
-    @redirect_uri = "http://744c7863.ngrok.io/repositories/#{repository_id}/slack"
+    @redirect_uri = "http://a0e6ee4a.ngrok.io/repositories/#{repository_id}/slack"
   end
 
   def call

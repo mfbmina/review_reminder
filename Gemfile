@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'omniauth-github', '~> 1.3'
+gem 'omniauth-github'
 gem 'slack-ruby-client'
 gem 'octokit'
 

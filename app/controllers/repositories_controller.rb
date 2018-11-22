@@ -3,7 +3,7 @@ class RepositoriesController < ApplicationController
 
   def slack
     response = VerifyCode.call(params[:code], params[:repository_id])
-    @repository.update(slack_data: response, is_enabled: true)
+    @repository.update(slack_data: response, enabled: true)
     redirect_to root_url
   end
 
