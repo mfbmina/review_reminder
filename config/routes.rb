@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     resource :user, only: :show
-    resources :repositories, only: :index
+    resources :repositories, only: :index do
+      get :sync, on: :collection
+    end
   end
 
   get '/auth/:provider/callback', to: 'sessions#create'

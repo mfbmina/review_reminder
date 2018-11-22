@@ -1,4 +1,4 @@
-class FetchRepos
+class FetchGithubRepos
   attr_reader :client
 
   def initialize(user)

@@ -7,7 +7,7 @@ class CreateUser
 
   def call
     user = User.create(params)
-    repositories = FetchRepos.call(user)
+    repositories = SyncRepos.call(user)
     user.repositories.create(repositories)
     user
   end
