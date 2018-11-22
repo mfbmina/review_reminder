@@ -5,7 +5,7 @@ import connectedAuthWrapper from 'redux-auth-wrapper/connectedAuthWrapper';
 const locationHelper = locationHelperBuilder({});
 
 const userIsAuthenticatedDefaults = {
-  authenticatedSelector: state => state.user !== null,
+  authenticatedSelector: state => state.user.user !== null,
   wrapperDisplayName: 'UserIsAuthenticated',
 };
 
@@ -17,7 +17,7 @@ export const userIsAuthenticatedRedir = connectedRouterRedirect({
 });
 
 const userIsNotAuthenticatedDefaults = {
-  authenticatedSelector: state => state.user === null,
+  authenticatedSelector: state => state.user.user === null,
   wrapperDisplayName: 'UserIsNotAuthenticated',
 };
 

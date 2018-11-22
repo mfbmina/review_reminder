@@ -15,9 +15,6 @@ import Dashboard from '../src/components/Dashboard';
 import {
   userIsAuthenticatedRedir,
   userIsNotAuthenticatedRedir,
-  userIsAdminRedir,
-  userIsAuthenticated,
-  userIsNotAuthenticated
 } from '../src/auth';
 
 const LoginComponent = userIsNotAuthenticatedRedir(Login);

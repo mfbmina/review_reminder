@@ -18,10 +18,14 @@ export default class SetupForm extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { fetchRepositories } = this.props;
-
     fetchRepositories();
+  }
+
+  syncRepositories() {
+    const { syncRepositories } = this.props;
+    syncRepositories();
   }
 
   onChange(e) {
@@ -71,7 +75,7 @@ export default class SetupForm extends Component {
           <Button
             outline
             color="info"
-            onClick={() => {}}
+            onClick={() => { this.syncRepositories(); }}
           >
             Re-sync repositories
           </Button> { ' ' }
@@ -108,4 +112,5 @@ SetupForm.propTypes = {
     }),
   ).isRequired,
   submit: PropTypes.func.isRequired,
+  syncRepositories: PropTypes.func.isRequired,
 };
