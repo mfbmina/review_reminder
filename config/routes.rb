@@ -1,3 +1,22 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :repositories, only: [] do
+    get :slack
+  end
+
+  namespace :webhooks do
+    post :slack
+    post :github
+  end
+
+  namespace :api do
+    resources :repositories, only: :index
+  end
+
+  get "/auth/:provider/callback" => "sessions#create"
+
+  delete "/sign_out" => "sessions#destroy", as: :sign_out
+
+  get '*path', to: "home#index"
+
+  root to: "home#index"
 end
