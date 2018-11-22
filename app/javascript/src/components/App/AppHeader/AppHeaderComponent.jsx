@@ -12,44 +12,13 @@ import {
 
 import Routes from '../../../routes';
 
-console.log(Routes);
-
 export default class AppHeaderComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false,
-    };
-  }
-
-  toggle() {
-    const { isOpen } = this.state;
-
-    this.setState({
-      isOpen: !isOpen,
-    });
-  }
-
-  isActive(current) {
-    const {
-      location: { pathname },
-    } = this.props;
-
-    return (pathname === current);
-  }
-
   isLoginPage() {
     const {
-      location: { pathname },
+      match: { path },
     } = this.props;
 
-    if (pathname === Routes.login) {
-      return true;
-    }
-
-    return false;
+    return path === Routes.login ? true : false;
   }
 
   handleLogout() {
@@ -59,8 +28,6 @@ export default class AppHeaderComponent extends Component {
   }
 
   render() {
-    const { isOpen } = this.state;
-
     return (
       <Navbar
         fixed="top"
@@ -69,19 +36,15 @@ export default class AppHeaderComponent extends Component {
       >
         <NavbarBrand href={Routes.login}>Slack Hub Reminder</NavbarBrand>
 
-        <NavbarToggler onClick={this.toggle} />
-
-        <Collapse isOpen={isOpen} navbar>
-          <Nav navbar>
-            { !this.isLoginPage() &&
-              (
-                <NavItem>
-                  <NavLink href="#" onClick={() => { this.handleLogout(); }}>Logout</NavLink>
-                </NavItem>
-              )
-            }
-          </Nav>
-        </Collapse>
+        <Nav navbar>
+          { !this.isLoginPage() &&
+            (
+              <NavItem>
+                <NavLink href="#" onClick={() => { this.handleLogout(); }}>Logout</NavLink>
+              </NavItem>
+            )
+          }
+        </Nav>
       </Navbar>
     );
   }
@@ -89,7 +52,7 @@ export default class AppHeaderComponent extends Component {
 
 AppHeaderComponent.propTypes = {
   handleLogout: PropTypes.func.isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string,
+  match: PropTypes.shape({
+    path: PropTypes.string,
   }).isRequired,
 };

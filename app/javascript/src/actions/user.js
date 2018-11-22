@@ -48,7 +48,9 @@ export function fetchUser() {
 
 export function handleLogout() {
   return (dispatch, getState) => {
-    return axios.delete('/api/user/sign_out')
+    return axios.delete('/api/user/sign_out', {
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    })
       .then(() => dispatch(handleUserLogout()))
       .then(() => dispatch(getState.history.push('/')));
   };

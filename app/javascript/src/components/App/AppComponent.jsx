@@ -8,6 +8,12 @@ import {
 import AppHeader from './AppHeader';
 
 export default class App extends Component {
+  componentDidMount() {
+    const { fetchUser } = this.props;
+    
+    fetchUser();
+  }
+
   render() {
     const { children } = this.props;
 
