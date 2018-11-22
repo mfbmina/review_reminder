@@ -3,10 +3,10 @@ import {
   RECEIVE_USER,
   HANDLE_USER_ERROR,
   HANDLE_USER_LOGOUT,
-} from '../actions/user';
+} from '../actions';
 
 export default function (state = {
-  user: {},
+  user: null,
   isFetching: false,
   error: false,
 }, action) {
@@ -31,7 +31,7 @@ export default function (state = {
     case HANDLE_USER_LOGOUT:
       return {
         ...state,
-        user: {},
+        user: null,
         isFetching: false,
       };
     default:

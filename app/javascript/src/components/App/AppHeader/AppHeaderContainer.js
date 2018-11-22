@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import AppHeader from './AppHeaderComponent';
 
-import { handleLogout } from '../../../actions/user';
+import { handleLogout } from '../../../actions';
 
 const mapStateToProps = ({ user: { user } }) => ({
   user,

@@ -36,3 +36,14 @@ export function fetchRepositories() {
       .catch(err => dispatch(handleRepositoriesError(err)));
   };
 }
+
+export function syncRepositories() {
+  return (dispatch) => {
+    dispatch(requestRepositories());
+    return axios.get('/api/repositories/sync', {
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    })
+      .then(res => dispatch(receiveRepositories(res)))
+      .catch(err => dispatch(handleRepositoriesError(err)));
+  };
+}

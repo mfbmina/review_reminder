@@ -1,3 +1,5 @@
+import { withRouter } from 'react-router-dom';
+
 import Dashboard from './DashboardComponent';
 
-export default Dashboard;
+export default withRouter(Dashboard);
