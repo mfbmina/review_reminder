@@ -10,7 +10,9 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import routes from '../../../routes';
+import Routes from '../../../routes';
+
+console.log(Routes);
 
 export default class AppHeaderComponent extends Component {
   constructor(props) {
@@ -43,7 +45,7 @@ export default class AppHeaderComponent extends Component {
       location: { pathname },
     } = this.props;
 
-    if (pathname === routes.login) {
+    if (pathname === Routes.login) {
       return true;
     }
 
@@ -65,7 +67,7 @@ export default class AppHeaderComponent extends Component {
         color="light"
         expand
       >
-        <NavbarBrand href={routes.login}>Slack Hub Reminder</NavbarBrand>
+        <NavbarBrand href={Routes.login}>Slack Hub Reminder</NavbarBrand>
 
         <NavbarToggler onClick={this.toggle} />
 

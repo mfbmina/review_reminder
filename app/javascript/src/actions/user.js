@@ -48,7 +48,7 @@ export function fetchUser() {
 
 export function handleLogout() {
   return (dispatch, getState) => {
-    return axios.delete('/api/signout')
+    return axios.delete('/api/user/sign_out')
       .then(() => dispatch(handleUserLogout()))
       .then(() => dispatch(getState.history.push('/')));
   };

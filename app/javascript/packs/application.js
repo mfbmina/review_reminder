@@ -8,10 +8,20 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import createRootReducer from '../src/reducers';
-import routes from '../src/routes';
+import Routes from '../src/routes';
 import App from '../src/components/App';
 import Login from '../src/components/Login';
 import Dashboard from '../src/components/Dashboard';
+import {
+  userIsAuthenticatedRedir,
+  userIsNotAuthenticatedRedir,
+  userIsAdminRedir,
+  userIsAuthenticated,
+  userIsNotAuthenticated
+} from '../src/auth';
+
+const LoginComponent = userIsNotAuthenticatedRedir(Login);
+const DashboardComponent = userIsAuthenticatedRedir(Dashboard);
 
 const store = createStore(
   createRootReducer,
@@ -26,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <BrowserRouter>
         <App>
           <Switch>
-            <Route exact path={routes.login} component={Login} />
-            <Route exact path={routes.dashboard} component={Dashboard} />
-            <Route component={Login} />
+            <Route exact path={Routes.login} component={LoginComponent} />
+            <Route exact path={Routes.dashboard} component={DashboardComponent} />
+            <Route component={LoginComponent} />
           </Switch>
         </App>
       </BrowserRouter>

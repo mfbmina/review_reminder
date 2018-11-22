@@ -1,4 +1,4 @@
 export default {
-  login: '/',
-  dashboard: '/dashboard',
+  login: '/login',
+  dashboard: '/',
 };
