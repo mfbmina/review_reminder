@@ -11,7 +11,7 @@ module Api
     end
 
     def sign_out
-      session[:user_id] = nil
+      reset_session
 
       respond_to do |format|
         format.json do
