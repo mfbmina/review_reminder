@@ -80,22 +80,6 @@ export default class DashboardComponent extends Component {
     );
   }
 
-  static success() {
-    return (
-      <Col md={{ size: 8, offset: 2 }}>
-        <Alert color="success">
-          <h4 className="alert-heading">Well done!</h4>
-          From now on, your channel will be notified when there are reviews requested.
-        </Alert>
-
-        <div className="text-center">
-          <Button outline color="primary">Open Slack</Button>{' '}
-          <Button color="success">Add reviewer to a pull request</Button>
-        </div>
-      </Col>
-    );
-  }
-
   manageSteps() {
     const { step } = this.state;
 
@@ -104,8 +88,6 @@ export default class DashboardComponent extends Component {
         return this.configure();
       case 2:
         return this.addToSlack();
-      case 3:
-        return this.success();
       default:
         return this.configure();
     }

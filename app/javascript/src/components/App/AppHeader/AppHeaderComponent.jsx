@@ -13,12 +13,12 @@ import {
 import Routes from '../../../routes';
 
 export default class AppHeaderComponent extends Component {
-  isLoginPage() {
+  isDashboard() {
     const {
       location: { pathname },
     } = this.props;
 
-    return pathname === Routes.login ? true : false;
+    return pathname === Routes.dashboard ? true : false;
   }
 
   handleLogout() {
@@ -37,7 +37,7 @@ export default class AppHeaderComponent extends Component {
         <NavbarBrand href={Routes.login}>Slack Hub Reminder</NavbarBrand>
 
         <Nav navbar>
-          { !this.isLoginPage() &&
+          { this.isDashboard() &&
             (
               <NavItem>
                 <NavLink href="#" onClick={() => { this.handleLogout(); }}>Logout</NavLink>

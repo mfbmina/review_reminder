@@ -10,7 +10,7 @@ import AppHeader from './AppHeader';
 export default class App extends Component {
   componentDidMount() {
     const { fetchUser } = this.props;
-    
+
     fetchUser();
   }
 
@@ -33,4 +33,5 @@ export default class App extends Component {
 
 App.propTypes = {
   children: PropTypes.element.isRequired,
+  fetchUser: PropTypes.func.isRequired,
 };

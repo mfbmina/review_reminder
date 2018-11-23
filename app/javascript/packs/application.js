@@ -12,6 +12,7 @@ import Routes from '../src/routes';
 import App from '../src/components/App';
 import Login from '../src/components/Login';
 import Dashboard from '../src/components/Dashboard';
+import Success from '../src/components/Success';
 import {
   userIsAuthenticatedRedir,
   userIsNotAuthenticatedRedir,
@@ -19,6 +20,7 @@ import {
 
 const LoginComponent = userIsNotAuthenticatedRedir(Login);
 const DashboardComponent = userIsAuthenticatedRedir(Dashboard);
+const SuccessComponent = userIsAuthenticatedRedir(Success);
 
 const store = createStore(
   createRootReducer,
@@ -35,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <Switch>
             <Route exact path={Routes.login} component={LoginComponent} />
             <Route exact path={Routes.dashboard} component={DashboardComponent} />
+            <Route exact path={Routes.success} component={SuccessComponent} />
             <Route component={LoginComponent} />
           </Switch>
         </App>
