@@ -10,15 +10,13 @@ import {
   NavLink,
 } from 'reactstrap';
 
-import Routes from '../../../routes';
-
 export default class AppHeaderComponent extends Component {
   isDashboard() {
     const {
       location: { pathname },
     } = this.props;
 
-    return pathname === Routes.dashboard ? true : false;
+    return pathname === '/dashboard' ? true : false;
   }
 
   handleLogout() {
@@ -34,7 +32,7 @@ export default class AppHeaderComponent extends Component {
         color="light"
         expand
       >
-        <NavbarBrand href={Routes.login}>Slack Hub Reminder</NavbarBrand>
+        <NavbarBrand href="/">Slack Hub Reminder</NavbarBrand>
 
         <Nav navbar>
           { this.isDashboard() &&

@@ -8,7 +8,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import createRootReducer from '../src/reducers';
-import Routes from '../src/routes';
 import App from '../src/components/App';
 import Login from '../src/components/Login';
 import Dashboard from '../src/components/Dashboard';
@@ -35,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <BrowserRouter>
         <App>
           <Switch>
-            <Route exact path={Routes.login} component={LoginComponent} />
-            <Route exact path={Routes.dashboard} component={DashboardComponent} />
-            <Route exact path={Routes.success} component={SuccessComponent} />
+            <Route exact path="/login" component={LoginComponent} />
+            <Route exact path="/" component={DashboardComponent} />
+            <Route exact path="/repositories/:id/success" component={SuccessComponent} />
             <Route component={LoginComponent} />
           </Switch>
         </App>
