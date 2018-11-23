@@ -17,6 +17,9 @@ export default class DashboardComponent extends Component {
   constructor() {
     super();
 
+    this.nextStep = this.nextStep.bind(this);
+    this.saveRepositoryId = this.saveRepositoryId.bind(this);
+
     this.state = {
       step: 1,
       repositoryId: null,
@@ -44,8 +47,8 @@ export default class DashboardComponent extends Component {
         </p>
 
         <SetupForm
-          nextStep={() => { this.nextStep(); }}
-          submit={(val) => { this.saveRepositoryId(val); }}
+          nextStep={this.nextStep}
+          submit={this.saveRepositoryId}
         />
       </div>
     );
