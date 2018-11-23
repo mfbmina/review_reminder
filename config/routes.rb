@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
-
   get '*path', to: "home#index"
 
   root to: "home#index"

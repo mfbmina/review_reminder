@@ -1,10 +1,10 @@
 class VerifyCode
-  attr_reader :client, :code, :redirect_uri
+  attr_reader :client, :code, :repository_id
 
   def initialize(code, repository_id)
     @client = Slack::Web::Client.new
     @code = code
-    @redirect_uri = "http://a0e6ee4a.ngrok.io/repositories/#{repository_id}/slack"
+    @repository_id = repository_id
   end
 
   def call
@@ -12,11 +12,11 @@ class VerifyCode
       code: code,
       client_id: ENV["SLACK_CLIENT_ID"],
       client_secret: ENV["SLACK_SECRET_ID"],
-      redirect_uri: redirect_uri
+      redirect_uri: Rails.application.routes.url_helpers.repository_slack_url(repository_id)
     )
   end
 
-  def self.call(code, redirect_uri)
-    new(code, redirect_uri).call
+  def self.call(code, repository_id)
+    new(code, repository_id).call
   end
 end

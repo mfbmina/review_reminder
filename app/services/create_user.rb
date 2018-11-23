@@ -7,8 +7,7 @@ class CreateUser
 
   def call
     user = User.create(params)
-    repositories = SyncRepos.call(user)
-    user.repositories.create(repositories)
+    SyncRepos.call(user)
     user
   end
 

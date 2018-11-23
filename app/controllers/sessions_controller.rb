@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
   def create
     auth = request.env['omniauth.auth']
 
@@ -11,6 +9,6 @@ class SessionsController < ApplicationController
     end
 
     session[:user_id] = user.id
-    redirect_to root_url, notice: "Signed in!"
+    redirect_to root_url
   end
 end
