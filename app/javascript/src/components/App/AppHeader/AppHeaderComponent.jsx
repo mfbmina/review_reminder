@@ -15,10 +15,10 @@ import Routes from '../../../routes';
 export default class AppHeaderComponent extends Component {
   isLoginPage() {
     const {
-      match: { path },
+      location: { pathname },
     } = this.props;
 
-    return path === Routes.login ? true : false;
+    return pathname === Routes.login ? true : false;
   }
 
   handleLogout() {
@@ -52,7 +52,7 @@ export default class AppHeaderComponent extends Component {
 
 AppHeaderComponent.propTypes = {
   handleLogout: PropTypes.func.isRequired,
-  match: PropTypes.shape({
-    path: PropTypes.string,
+  location: PropTypes.shape({
+    pathname: PropTypes.string,
   }).isRequired,
 };
