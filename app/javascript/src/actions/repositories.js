@@ -47,3 +47,40 @@ export function syncRepositories() {
       .catch(err => dispatch(handleRepositoriesError(err)));
   };
 }
+
+export const REQUEST_REPOSITORY = 'REQUEST_REPOSITORY';
+export const RECEIVE_REPOSITORY = 'RECEIVE_REPOSITORY';
+export const HANDLE_REPOSITORY_ERROR = 'HANDLE_REPOSITORY_ERROR';
+
+function requestRepository() {
+  return { type: REQUEST_REPOSITORY };
+}
+
+function receiveRepository(data) {
+  return (dispatch) => {
+    dispatch({
+      type: RECEIVE_REPOSITORY,
+      data: data.data,
+    });
+  };
+}
+
+function handleRepositoryError(error) {
+  return (dispatch) => {
+    dispatch({
+      type: HANDLE_REPOSITORY_ERROR,
+      error,
+    });
+  };
+}
+
+export function fetchRepository(id) {
+  return (dispatch) => {
+    dispatch(requestRepository());
+    return axios.get(`/api/repositories/${id}`, {
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    })
+      .then(res => dispatch(receiveRepository(res)))
+      .catch(err => dispatch(handleRepositoryError(err)));
+  };
+}
