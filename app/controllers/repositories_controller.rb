@@ -11,6 +11,6 @@ class RepositoriesController < ApplicationController
   private
 
   def set_repository
-    @repository = (current_user || User.first).repositories.find(params[:repository_id])
+    @repository = Repository.find(params[:repository_id])
   end
 end
