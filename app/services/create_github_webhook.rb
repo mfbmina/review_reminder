@@ -1,4 +1,6 @@
 class CreateGithubWebhook
+  include Rails.application.routes.url_helpers
+
   attr_reader :client, :repository
 
   def initialize(repository)
@@ -17,7 +19,7 @@ class CreateGithubWebhook
   private
 
   def url_params
-    { url: Rails.application.routes.url_helpers.webhooks_github_url, content_type: 'json' }
+    { url: webhooks_github_url, content_type: 'json' }
   end
 
   def required_hooks
