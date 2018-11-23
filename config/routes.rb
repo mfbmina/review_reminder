@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       delete :sign_out
     end
 
-    resources :repositories, only: :index do
+    resources :repositories, only: [:index, :show] do
       get :sync, on: :collection
     end
   end

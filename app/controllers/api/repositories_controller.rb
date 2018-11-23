@@ -10,6 +10,16 @@ module Api
       end
     end
 
+    def show
+      @repository = current_user.repositories.find(params[:id])
+
+      respond_to do |format|
+        format.json do
+          render json: @repository
+        end
+      end
+    end
+
     def sync
       @repositories = SyncRepos.call(current_user)
 
