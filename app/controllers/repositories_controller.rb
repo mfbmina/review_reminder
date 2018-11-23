@@ -5,7 +5,7 @@ class RepositoriesController < ApplicationController
     response = VerifyCode.call(params[:code], params[:repository_id])
     CreateGithubWebhook.call(@repository)
     @repository.update(slack_data: response, enabled: true)
-    redirect_to root_url
+    redirect_to "repositores/#{@repository.id}/success"
   end
 
   private
