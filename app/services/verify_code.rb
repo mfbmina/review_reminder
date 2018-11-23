@@ -1,4 +1,6 @@
 class VerifyCode
+  include Rails.application.routes.url_helpers
+
   attr_reader :client, :code, :repository_id
 
   def initialize(code, repository_id)
@@ -12,7 +14,7 @@ class VerifyCode
       code: code,
       client_id: ENV["SLACK_CLIENT_ID"],
       client_secret: ENV["SLACK_SECRET_ID"],
-      redirect_uri: Rails.application.routes.url_helpers.repository_slack_url(repository_id)
+      redirect_uri: repository_slack_url(repository_id)
     )
   end
 
